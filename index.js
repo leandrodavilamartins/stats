@@ -26,18 +26,23 @@ class Data {
             let result = item - this.media()
             pre_sum.push(result * result);
         })
-        console.log(pre_sum);
+        //console.log(pre_sum);
         let sum = 0 ; 
         pre_sum.forEach( item => {
             sum += item;
         })
-        console.log(sum)
+        //console.log(sum)
         return sum / (this.data.length - 1);
     }
 
     desvio(){
         let result = Math.sqrt(this.variancia())
         return result; 
+    }
+
+    cv(){
+        let result = this.desvio() / this.media()
+        return result;
     }
 }
 
