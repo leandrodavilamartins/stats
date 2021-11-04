@@ -1,48 +1,12 @@
-class Data {
-    constructor(...arrayToPass){
-        this.data = arrayToPass;
-    }
-    
-    contador(){
-        return this.data.length;
-    }
+const Data = require('./stats')
 
-    soma(){
-        let soma = 0;
-        this.data.forEach( item => {
-            soma += item;
-        })
-        return soma;
-    }
+let numbers = [1,2,4,5,6]
 
-    media(){
-        let soma = this.soma();
-        return soma / this.data.length;
-    }
+let stat = new Data(numbers);
 
-    variancia(){
-        let pre_sum = [];
-        this.data.forEach( item => {
-            let result = item - this.media()
-            pre_sum.push(result * result);
-        })
-        //console.log(pre_sum);
-        let sum = 0 ; 
-        pre_sum.forEach( item => {
-            sum += item;
-        })
-        //console.log(sum)
-        return sum / (this.data.length - 1);
-    }
-
-    desvio(){
-        let result = Math.sqrt(this.variancia())
-        return result; 
-    }
-
-    cv(){
-        let result = this.desvio() / this.media()
-        return result;
-    }
-}
-
+console.log(stat.data);
+console.log(stat.media());
+console.log(stat.variancia());
+console.log(stat.cv());
+console.log(stat.contador());
+console.log(stat.desvio());
