@@ -75,6 +75,17 @@ class Data {
         let result = this.desvio() / this.media()
         return result;
     }
+
+    percentil(p){
+        let values = []; 
+        this.data.forEach( item => {
+            if( item <= p ){
+                values.push(item); 
+            }
+        })
+        let percentil = values.length / this.data.length;
+        return Math.ceil(percentil * 100); 
+    }
 }
 
 module.exports = Data;
