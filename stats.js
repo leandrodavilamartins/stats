@@ -1,6 +1,6 @@
 class Data {
     constructor(...arrayToPass){
-        this.data = arrayToPass[0];
+        this.data = arrayToPass[0].sort(function(a,b){return a - b}); // sort the data 
     }
     
     contador(){
@@ -31,6 +31,24 @@ class Data {
             }
         })
         return map;
+    }
+
+    mediana(){
+        let median = '';
+        if((this.data.length % 2) == 1 ){
+            let middle = Math.floor((parseInt(this.data.length) / 2));
+            median = this.data[middle]; 
+            //console.log(median);
+        }
+        else{
+            let middle_1 = (parseInt(this.data.length) / 2) - 1 ; 
+            //console.log(middle_1 + 1);
+            let middle_2 = parseInt(this.data.length) / 2 ;
+            //console.log(middle_2 + 1);
+            median = (this.data[middle_1] + this.data[middle_2]) / 2 ; 
+            //console.log(median);
+        }
+        return median;
     }
 
     variancia(){
