@@ -20,6 +20,19 @@ class Data {
         return soma / this.data.length;
     }
 
+    moda(){
+        const map = {};
+        this.data.forEach(item => {
+            if(map[item]){
+                map[item]++;
+            }
+            else{
+                map[item] = 1;
+            }
+        })
+        return map;
+    }
+
     variancia(){
         let pre_sum = [];
         this.data.forEach( item => {
