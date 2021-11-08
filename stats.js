@@ -1,4 +1,6 @@
 class Data {
+    // this class deals with sample's variables 
+    // In a further iteration , new classes can be created to deal with some other distributions... 
     constructor(...arrayToPass){
         this.data = arrayToPass[0].sort(function(a,b){return a - b}); // sort the data 
     }
