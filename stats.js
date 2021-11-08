@@ -3,11 +3,11 @@ class Data {
         this.data = arrayToPass[0].sort(function(a,b){return a - b}); // sort the data 
     }
     
-    contador(){
+    get contador(){
         return this.data.length;
     }
 
-    soma(){
+    get soma(){
         let soma = 0;
         this.data.forEach( item => {
             soma += item;
@@ -15,12 +15,12 @@ class Data {
         return soma;
     }
 
-    media(){
-        let soma = this.soma();
+    get media(){
+        let soma = this.soma;
         return soma / this.data.length;
     }
 
-    moda(){
+    get moda(){
         const map = {};
         this.data.forEach(item => {
             if(map[item]){
@@ -33,7 +33,7 @@ class Data {
         return map;
     }
 
-    mediana(){
+    get mediana(){
         let median = '';
         if((this.data.length % 2) == 1 ){
             let middle = Math.floor((parseInt(this.data.length) / 2));
@@ -51,10 +51,10 @@ class Data {
         return median;
     }
 
-    variancia(){
+    get variancia(){
         let pre_sum = [];
         this.data.forEach( item => {
-            let result = item - this.media()
+            let result = item - this.media;
             pre_sum.push(result * result);
         })
         //console.log(pre_sum);
@@ -66,13 +66,13 @@ class Data {
         return sum / (this.data.length - 1);
     }
 
-    desvio(){
-        let result = Math.sqrt(this.variancia())
+    get desvio(){
+        let result = Math.sqrt(this.variancia)
         return result; 
     }
 
-    cv(){
-        let result = this.desvio() / this.media()
+    get cv(){
+        let result = this.desvio / this.media;
         return result;
     }
 

@@ -11,5 +11,6 @@ let stat = new Data(numbers);
 // console.log(stat.contador());
 // console.log(stat.desvio());
 // console.log(stat.moda());
-//console.log(stat.mediana());
+console.log(stat.mediana);
 console.log(stat.percentil(1));
+console.log(stat.media);
