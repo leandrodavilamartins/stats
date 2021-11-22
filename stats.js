@@ -98,7 +98,37 @@ class Distribution {
     }
 }
 
-class Poisson extends Distribution { 
+class Discrete extends Distribution {
+ // methods upper(), cumulative(), probability(), interval()
+    constructor(){
+        super();
+    }
+
+    probability() {
+        console.log('Return the probability')
+    }
+
+    cumulative(value) { // all the child classes will inherit this method 
+        var total = 0 ; 
+        for(let i = 0 ; i <= value ; i++) {
+            let result = this.probability(i);
+            total =+ result;
+        }
+        return total; 
+    }
+
+    upper(value) { // the probability of 'value' is included in the calculation 
+        let total = 1 - this.cumulative(value - 1);
+        return total;
+    }
+
+    interval(value1, value2){ // closed limits 
+        let result = this.cumulative(value1) - this.cumulative(value2);
+        return result; 
+    }
+}
+
+class Poisson extends Discrete { 
 
     constructor(mean) {
         super();
@@ -111,7 +141,7 @@ class Poisson extends Distribution {
     }
 }
 
-class Binomial extends Distribution{
+class Binomial extends Discrete{
     
     constructor(assays, p_success, p_failure){
         super();
@@ -127,7 +157,7 @@ class Binomial extends Distribution{
 
 }
 
-class Hyper extends Distribution {
+class Hyper extends Discrete {
     
     constructor(assays, n_elements, n_success){
         super();
