@@ -155,6 +155,19 @@ class Normal extends Continuous {
     }
 }
 
+class Exponential extends Continuous {
+
+    constructor(mean) {
+        super();
+        this.mean = mean ; 
+    }
+
+    probability(value) {
+        let result = 1 - Math.exp(-1 * (value / this.mean));
+        return result; 
+    }
+}
+
 class Poisson extends Discrete { 
 
     constructor(mean) {
@@ -204,4 +217,4 @@ class Hyper extends Discrete {
 }
 
 
-module.exports = {Data: Data, Poisson: Poisson, Binomial: Binomial, Hyper: Hyper, Normal: Normal};
+module.exports = {Data: Data, Poisson: Poisson, Binomial: Binomial, Hyper: Hyper, Normal: Normal, Exponential: Exponential};
