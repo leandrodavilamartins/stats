@@ -1,3 +1,5 @@
+const mathjs = require('mathjs')
+
 class Data {
     // this class deals with sample's variables 
     // In a further iteration , new classes can be created to deal with some other distributions... 
@@ -128,6 +130,31 @@ class Discrete extends Distribution {
     }
 }
 
+class Continuous extends Distribution {
+
+    constructor(){
+        super();
+    }
+
+    probability(value) {
+        console.log('Return probability');
+    }
+
+}
+
+class Normal extends Continuous {
+
+    constructor(mean, standardDeviation) {
+        super();
+        this.mean = mean; 
+        this.standardDeviation = standardDeviation; 
+    }
+
+    probability(value) {
+        return (1 - mathjs.erf((this.mean - value ) / (Math.sqrt(2) * this.standardDeviation))) / 2
+    }
+}
+
 class Poisson extends Discrete { 
 
     constructor(mean) {
@@ -177,4 +204,4 @@ class Hyper extends Discrete {
 }
 
 
-module.exports = {Data: Data, Poisson: Poisson, Binomial: Binomial, Hyper: Hyper};
+module.exports = {Data: Data, Poisson: Poisson, Binomial: Binomial, Hyper: Hyper, Normal: Normal};
